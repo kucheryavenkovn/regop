@@ -1,11 +1,24 @@
 network:
     version: 2
+    renderer: networkd
     ethernets:
-     enp2s0:
+     enp3s0:
        dhcp4: no
-       addresses: [10.10.0.22/16]
+
+
+    bridges:
+     br0:
+       macaddress: f0:2f:74:85:da:6e
+       interfaces:
+         - enp3s0
+       addresses:
+         - 10.10.0.22/16
+       mtu: 1500
        gateway4: 10.10.1.1
        nameservers:
-         addresses: [10.10.0.3,10.10.0.20]
-         search: [eco-komplex22.local]
-
+        addresses: [10.10.0.3,10.10.0.20]
+       parameters:
+        stp: true
+        forward-delay: 4
+       dhcp4: no
+       dhcp6: no
