@@ -1,0 +1,34 @@
+databases:
+  do:
+    url: postgres://postgres:secret@srv-1c:5432/do
+    capture_query_stats: pghero
+  ro:
+    url: postgres://postgres:secret@srv-1c:5432/ro
+    capture_query_stats: pghero
+  frag:
+    url: postgres://postgres:secret@srv-1c:5432/frag
+    capture_query_stats: pghero
+# Минимальная длительность запросов (в секундах), которые будут считаться долгими
+long_running_query_sec: 60
+
+# Минимальная длительность запросов (в миллисекундах), которые будут считаться медленными
+slow_query_ms: 250
+
+# Минимальное кол-во вызовов запросов, которые будут считаться медленными
+slow_query_calls: 100
+
+# Минимальное количество соединений для показа предупреждения
+total_connections_threshold: 100
+
+# Таймаут для explain-запросов
+explain_timeout_sec: 10
+
+# Нормализация запросов (замена значений запроса нумерованными параметрами)
+filter_data: true
+
+# Basic авторизация
+username: pghero
+password: secret
+
+# Таймзона
+time_zone: "Asia/Barnaul"
