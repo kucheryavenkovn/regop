@@ -1,0 +1,22 @@
+#!/bin/bash
+# Location/File: /etc/libvirt/hooks/network
+# $1 = <network_name> e.g. default
+# $2 = <action> i.e. start, started, stopped
+# $3 = <action-stage> i.e.  begin, end
+# $4 = <terminator> -
+
+VIRT_NET_MATCH="br0"
+VIRT_BRIDGE_MATCH="br0"
+
+if [ "$1" == "$VIRT_NET_MATCH" ]; then
+  VIRT_BRIDGE=$VIRT_BRIDGE_MATCH
+  # Configure path through script based on <action>
+  RT_ACT=""
+  if [ "$2" == "started" ]; then
+
+    iptables -I LIBVIRT_FWX -i $VIRT_NET_MATCH -o $VIRT_NET_MATCH -j ACCEPT
+  elif [ "$2" == "stopped" ]; then
+    iptables -D LIBVIRT_FWX -i $VIRT_NET_MATCH -o $VIRT_NET_MATCH -j ACCEPT
+  fi
+fi #if [ "$1" == "$VIRT_NET_MATCH" ]; then
+
