@@ -66,3 +66,4 @@ needfiles/1c/license-tools/lib/org.eclipse.persistence.moxy-2.7.4.jar
 needfiles/1c/license-tools/lib/slf4j-api-1.8.0-beta4.jar
 needfiles/1c/license-tools/lib/snakeyaml-1.25.jar
 /dt
+/etc
