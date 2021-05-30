@@ -2,10 +2,12 @@
 
 Создал скрипт, создающий дампы баз данных
 ```bash
+]
 #/bin/bash
 export PGPASSWORD=secret1c
-pg_dump -h 127.0.0.1 -U postgres --format custom -b --section pre-data --section data --section post-data --verbose --file /backup/ro/ro-$(date +%Y-%m-%d).bkp ro
-pg_dump -h 127.0.0.1 -U postgres --format custom -b --section pre-data --section data --section post-data --verbose --file /backup/do/do-$(date +%Y-%m-%d).bkp do
+/opt/pgpro/1c-13/bin/pg_dump -h 127.0.0.1 -U postgres --format custom -b --section pre-data --section data --section post-data --verbose --file /backup/ro/ro-$(date +%Y-%m-%d).bkp ro
+/opt/pgpro/1c-13/bin/pg_dump -h 127.0.0.1 -U postgres --format custom -b --section pre-data --section data --section post-data --verbose --file /backup/do/do-$(date +%Y-%m-%d).bkp do
+/opt/pgpro/1c-13/bin/pg_dump -h 127.0.0.1 -U postgres --format custom -b --section pre-data --section data --section post-data --verbose --file /backup/zup/zup-$(date +%Y-%m-%d).bkp zup
 ```
 
 для того, чтобы при запуске скрипта pg_dump не запрашивал пароль создал файл /root/.pgpass со следующим содержимым:
